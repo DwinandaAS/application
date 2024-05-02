@@ -4,3 +4,6 @@ export * from './peminjaman.controller';
 export * from './pengembalian.controller';
 export * from './anggota-peminjaman.controller';
 export * from './anggota-pengembalian.controller';
+export * from './buku-peminjaman.controller';
+export * from './buku-pengembalian.controller';
+export * from './buku.controller';

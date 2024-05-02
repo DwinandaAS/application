@@ -1,5 +1,6 @@
 import {Entity, belongsTo, model, property} from '@loopback/repository';
 import { Anggota, AnggotaWithRelations } from './anggota.model';
+import { Buku, BukuWithRelations } from './buku.model';
 
 @model({
   settings: {
@@ -11,12 +12,12 @@ import { Anggota, AnggotaWithRelations } from './anggota.model';
         entityKey: 'id',
         foreignKey: 'anggotaid'
       },
-      // fk_buku_bukuId: {
-      //   name: 'id_buku',
-      //   entity: 'buku',
-      //   entityKey: 'id',
-      //   foreignKey: 'bukuid'
-      // }
+      fk_buku_bukuId: {
+        name: 'id_buku',
+        entity: 'buku',
+        entityKey: 'id',
+        foreignKey: 'bukuid'
+      }
     }
   }
 })
@@ -66,6 +67,9 @@ export class Peminjaman extends Entity {
 
   @belongsTo(() => Anggota)
   anggotaId: number;
+
+  @belongsTo(() => Buku) 
+  bukuId?: number;
   // Define well-known properties here
 
   // Indexer property to allow additional data
@@ -79,7 +83,8 @@ export class Peminjaman extends Entity {
 
 export interface PeminjamanRelations {
   // describe navigational properties here
-  anggota?: AnggotaWithRelations[]
+  anggota?: AnggotaWithRelations[];
+  buku?: BukuWithRelations[];
 }
 
 export type PeminjamanWithRelations = Peminjaman & PeminjamanRelations;

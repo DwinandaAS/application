@@ -12,12 +12,17 @@ export class PeminjamanRepository extends DefaultCrudRepository<
 > {
   public readonly anggota: BelongsToAccessor<Anggota, typeof Anggota.prototype.id>;
 
+  public readonly buku: BelongsToAccessor<Buku, typeof Buku.prototype.id>
+
   constructor(
     @inject('datasources.db') dataSource: DbDataSource,
     @repository.getter(AnggotaRepository) protected anggotaRepositoryGetter: Getter<AnggotaRepository>,
+    @repository.getter(BukuRepository) protected bukuRepositoryGetter: Getter<BukuRepository>
   ) {
     super(Peminjaman, dataSource);
     this.anggota = this.createBelongsToAccessorFor('anggota', anggotaRepositoryGetter)
     this.registerInclusionResolver('anggota', this.anggota.inclusionResolver)
+    this.buku = this.createBelongsToAccessorFor('buku', bukuRepositoryGetter)
+    this.registerInclusionResolver('buku', this.buku.inclusionResolver)
   }
 }

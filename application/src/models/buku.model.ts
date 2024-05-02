@@ -1,4 +1,6 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Peminjaman, PeminjamanWithRelations} from './peminjaman.model';
+import {Pengembalian, PengembalianWithRelations} from './pengembalian.model';
 
 @model({settings: {
   postgresql: {schema: 'public', table: 'buku'},
@@ -78,6 +80,12 @@ export class Buku extends Entity {
   })
   jumlah: number;
 
+  @hasMany(() => Peminjaman)
+  peminjaman: Peminjaman[];
+
+  @hasMany(() => Pengembalian)
+  pengembalians: Pengembalian[];
+
   constructor(data?: Partial<Buku>) {
     super(data);
   }
@@ -85,6 +93,8 @@ export class Buku extends Entity {
 
 export interface BukuRelations {
   // describe navigational properties here
+  peminjaman?: PeminjamanWithRelations[];
+  pengembalian?: PengembalianWithRelations[];
 }
 
 export type BukuWithRelations = Buku & BukuRelations;
