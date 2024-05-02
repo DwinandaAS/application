@@ -1,13 +1,28 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Buku, BukuWithRelations} from './buku.model';
 
 @model({settings: {
   postgresql: {schema: 'public', table: 'rak'}
 }})
 export class Rak extends Entity {
   @property({
-    type: 'string',
+    type: 'number',
     id: true,
     generated: false,
+    required: true,
+    postgresql: {
+      columnName: 'id',
+      datatype: 'integer',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No'
+    }
+  })
+  id?: number;
+  
+  @property({
+    type: 'string',
     required: true,
     postgresql: {
       columnName: 'kode_rak',
@@ -34,6 +49,8 @@ export class Rak extends Entity {
   })
   address: string;
 
+  @hasMany(() => Buku)
+  bukus: Buku[];
   // Define well-known properties here
 
   // Indexer property to allow additional data
@@ -47,6 +64,7 @@ export class Rak extends Entity {
 
 export interface RakRelations {
   // describe navigational properties here
+  buku?: BukuWithRelations[];
 }
 
 export type RakWithRelations = Rak & RakRelations;

@@ -7,3 +7,6 @@ export * from './anggota-pengembalian.controller';
 export * from './buku-peminjaman.controller';
 export * from './buku-pengembalian.controller';
 export * from './buku.controller';
+export * from './author-buku.controller';
+export * from './publisher-buku.controller';
+export * from './rak-buku.controller';

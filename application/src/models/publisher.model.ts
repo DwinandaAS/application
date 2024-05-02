@@ -1,4 +1,5 @@
-import {Entity, model, property} from '@loopback/repository';
+import {Entity, model, property, hasMany} from '@loopback/repository';
+import {Buku, BukuWithRelations} from './buku.model';
 
 @model({settings: {
   postgresql: {schema: 'public', table: 'publisher'}
@@ -61,6 +62,8 @@ export class Publisher extends Entity {
   })
   no_hp: string;
 
+  @hasMany(() => Buku)
+  bukus: Buku[];
   // Define well-known properties here
 
   // Indexer property to allow additional data
@@ -74,6 +77,7 @@ export class Publisher extends Entity {
 
 export interface PublisherRelations {
   // describe navigational properties here
+  buku?: BukuWithRelations[];
 }
 
 export type PublisherWithRelations = Publisher & PublisherRelations;
