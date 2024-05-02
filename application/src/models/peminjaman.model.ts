@@ -51,20 +51,6 @@ export class Peminjaman extends Entity {
   })
   tanggal_peminjaman: Date;
 
-  @property({
-    type: 'date',
-    required: true,
-    postgresql: {
-      columnName: 'tanggal_pengembalian',
-      dataType: 'date',
-      dataLength: null,
-      dataPrecision: null,
-      dataScale: 0,
-      nulltables: 'No',
-    }
-  })
-  tanggal_pengembalian: Date;
-
   @belongsTo(() => Anggota)
   anggotaId: number;
 

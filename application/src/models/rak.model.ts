@@ -35,20 +35,6 @@ export class Rak extends Entity {
   })
   kode_rak: string;
 
-  @property({
-    type: 'string',
-    required: true,
-    postgresql: {
-      columnName: 'address',
-      dataType: 'text',
-      dataLength: null,
-      dataPrecision: null,
-      dataScale: 0,
-      nulltables: 'No',
-    }
-  })
-  address: string;
-
   @hasMany(() => Buku)
   bukus: Buku[];
   // Define well-known properties here
