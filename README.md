@@ -1,2 +1,2 @@
 # application
-Create an application using Loopback 4
+Create an API CRUD simple application library using Loopback 4
