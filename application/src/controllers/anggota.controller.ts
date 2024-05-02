@@ -108,7 +108,8 @@ export class AnggotaController {
     @param.path.number('id') id: number,
     @param.filter(Anggota, {exclude: 'where'}) filter?: FilterExcludingWhere<Anggota>
   ): Promise<Anggota> {
-    return this.anggotaRepository.findById(id, filter);
+    console.log(filter)
+    return this.anggotaRepository.findById(id);
   }
 
   @patch('/anggotas/{id}')

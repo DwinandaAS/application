@@ -8,26 +8,58 @@ export class Publisher extends Entity {
     type: 'number',
     id: true,
     generated: true,
+    postgresql: {
+      columnName: 'id',
+      dataType: 'integer',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
   id?: number;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {columnName: 'name',
+      dataType: 'text',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
   name: string;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      columnName: 'address',
+      dataType: 'text',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
   address: string;
 
   @property({
-    type: 'number',
+    type: 'string',
     required: true,
+    // limit: 8,
+    postgresql: {
+      columnName: 'no_hp',
+      dataType: 'text',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
-  no_hp: number;
+  no_hp: string;
 
   // Define well-known properties here
 

@@ -9,12 +9,28 @@ export class Rak extends Entity {
     id: true,
     generated: false,
     required: true,
+    postgresql: {
+      columnName: 'kode_rak',
+      dataType: 'text',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
   kode_rak: string;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {
+      columnName: 'address',
+      dataType: 'text',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
   address: string;
 

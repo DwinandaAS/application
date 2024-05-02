@@ -1,7 +1,9 @@
-import {inject} from '@loopback/core';
-import {DefaultCrudRepository} from '@loopback/repository';
+import {inject, Getter} from '@loopback/core';
+import {DefaultCrudRepository, repository, HasManyRepositoryFactory} from '@loopback/repository';
 import {DbDataSource} from '../datasources';
-import {Buku, BukuRelations} from '../models';
+import {Buku, BukuRelations, Peminjaman, Pengembalian} from '../models';
+import {PeminjamanRepository} from './peminjaman.repository';
+import {PengembalianRepository} from './pengembalian.repository';
 
 export class BukuRepository extends DefaultCrudRepository<
   Buku,

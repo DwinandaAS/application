@@ -28,27 +28,55 @@ export class Buku extends Entity {
     type: 'number',
     id: true,
     generated: true,
+    postgresql: {columnName: 'id',
+      dataType: 'integer',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+  }
   })
   id?: number;
 
   @property({
     type: 'string',
     required: true,
+    postgresql: {columnName: 'title',
+      dataType: 'text',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
   title: string;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {columnName: 'tahun_terbit',
+      dataType: 'integer',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    } 
   })
   tahun_terbit: number;
 
   @property({
     type: 'number',
     required: true,
+    postgresql: {
+      columnName: 'jumlah',
+      dataType: 'integer',
+      dataLength: null,
+      dataPrecision: null,
+      dataScale: 0,
+      nulltables: 'No',
+    }
   })
   jumlah: number;
-
 
   constructor(data?: Partial<Buku>) {
     super(data);
